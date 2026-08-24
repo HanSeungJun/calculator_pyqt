@@ -1,10 +1,14 @@
 import sys
+import os
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 from PyQt5 import uic  # .ui 불러오기
 import math
 
-from_class = uic.loadUiType("/home/hsj/dev_ws/pyqt/src/calculator_hsj_v3.ui")[0]
+# .ui 는 이 스크립트와 같은 폴더에서 찾는다.
+# (절대경로를 박으면 만든 사람 PC 밖에서는 실행되지 않는다)
+UI_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "calculator.ui")
+from_class = uic.loadUiType(UI_PATH)[0]
 
 class WindowClass(QMainWindow, from_class):
     def __init__(self):
